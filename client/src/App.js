@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios"; // Import Axios
+import axios from "axios";
 import "./vocify.css";
+import toast, { Toaster } from "react-hot-toast";
 
 const App = () => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
@@ -39,22 +40,22 @@ const App = () => {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-    const { username, password } = formData;
+    const { email, password } = formData;
 
-    try {
-      const response = await axios.post("http://localhost:5000/api/signin", {
-        username,
-        password,
+    await axios
+      .post("http://localhost:8080/api/users/login", {
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        const user = res.data.user;
+        console.log("User: ", user.email);
+        toast.success(res.data.msg || "Login complete");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.response.data.error);
       });
-      if (response.data.success) {
-        alert("Login successful!");
-      } else {
-        alert("Invalid username or password!");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("An error occurred during sign-in.");
-    }
   };
 
   const handleSignUp = async (e) => {
@@ -99,6 +100,7 @@ const App = () => {
 
   return (
     <div className={`container ${isSignUpMode ? "sign-up-mode" : ""}`}>
+      <Toaster />
       <div className="forms-container">
         <div className="signin-signup">
           <form className="sign-up-form" onSubmit={handleSignUp}>
@@ -259,10 +261,10 @@ const App = () => {
             <div className="input-field">
               <i className="fas fa-user"></i>
               <input
-                type="text"
-                placeholder="Username"
-                name="username"
-                value={formData.username}
+                type="email"
+                placeholder="Email"
+                name="email"
+                value={formData.email}
                 onChange={handleInputChange}
                 required
               />
