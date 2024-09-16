@@ -26,7 +26,7 @@ const handleSignup = async (req, res) => {
 
 const handleLogin = async (req, res) => {
   const { email, password } = req.body;
-  console.log("Request got");
+  // console.log("Request got");
   if (!email) {
     return res.status(400).json({ error: "Email is required" });
   }
