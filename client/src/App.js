@@ -68,13 +68,16 @@ const App = () => {
       setError("Passwords do not match");
     } else {
       try {
-        const response = await axios.post("http://localhost:5000/api/signup", {
-          name,
-          email,
-          phone,
-          address,
-          password,
-        });
+        const response = await axios.post(
+          "http://localhost:8080/api/users/signup",
+          {
+            name,
+            email,
+            phone,
+            address,
+            password,
+          }
+        );
         if (response.data.success) {
           alert("Account created successfully!");
           setFormData({
