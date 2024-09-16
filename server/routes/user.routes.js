@@ -1,8 +1,19 @@
 const express = require("express");
-const { handleSignup, handleLogin } = require("../controllers/user");
-
 const router = express.Router();
+const { handleSignup, handleLogin } = require("../controllers/user");
+const upload = require("../middlewares/multer");
 
-router.post("/signup", handleSignup).post("/login", handleLogin);
+// Signup route with file uploads
+router.post(
+  "/signup",
+  upload.fields([
+    { name: "aadharCard", maxCount: 1 },
+    { name: "certification", maxCount: 1 },
+  ]),
+  handleSignup
+);
+
+// Login route
+router.post("/login", handleLogin);
 
 module.exports = router;

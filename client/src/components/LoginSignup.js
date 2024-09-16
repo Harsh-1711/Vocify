@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import "../vocify.css";
 import toast, { Toaster } from "react-hot-toast";
@@ -15,13 +15,28 @@ const LoginSignup = () => {
     confirmPassword: "",
     username: "",
   });
+  const [files, setFiles] = useState({
+    aadharCard: null,
+    certification: null,
+  });
   const [error, setError] = useState(null);
+
+  const aadharCardRef = useRef(null);
+  const certificationRef = useRef(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
+    }));
+  };
+
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
+    setFiles((prevFiles) => ({
+      ...prevFiles,
+      [name]: files[0],
     }));
   };
 
@@ -42,22 +57,23 @@ const LoginSignup = () => {
     e.preventDefault();
     const { email, password } = formData;
 
-    await axios
-      .post("http://localhost:8080/api/users/login", {
-        email: email,
-        password: password,
-      })
-      .then((res) => {
-        const user = res.data.user;
-        console.log("User: ", user.email);
-        toast.success(res.data.msg || "Login complete");
-        // Redirect to home page after login
-        window.location.href = "/home";
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error(error.response.data.error);
-      });
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/users/login",
+        {
+          email,
+          password,
+        }
+      );
+      const user = response.data.user;
+      console.log("User: ", user.email);
+      toast.success(response.data.msg || "Login complete");
+      // Redirect to home page after login
+      window.location.href = "/home";
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.error);
+    }
   };
 
   const handleSignUp = async (e) => {
@@ -65,23 +81,40 @@ const LoginSignup = () => {
     const { name, email, phone, address, password, confirmPassword } = formData;
 
     if (!email || !password) {
-      setError("Please fill all required fields");
+      toast.error("Please fill all required fields");
     } else if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      toast.error("Passwords do not match");
     } else {
+      // Create a new FormData object
+      const formDataToSend = new FormData();
+      formDataToSend.append("name", name);
+      formDataToSend.append("email", email);
+      formDataToSend.append("phone", phone);
+      formDataToSend.append("address", address);
+      formDataToSend.append("password", password);
+      formDataToSend.append("confirmPassword", confirmPassword);
+
+      // Append file inputs
+      if (files.aadharCard) {
+        formDataToSend.append("aadharCard", files.aadharCard);
+      }
+      if (files.certification) {
+        formDataToSend.append("certification", files.certification);
+      }
+
       try {
         const response = await axios.post(
           "http://localhost:8080/api/users/signup",
+          formDataToSend,
           {
-            name,
-            email,
-            phone,
-            address,
-            password,
+            headers: {
+              "Content-Type": "multipart/form-data", // Required for file uploads
+            },
           }
         );
+
         if (response.data.success) {
-          alert("Account created successfully!");
+          toast.success("Account created successfully!");
           setFormData({
             name: "",
             email: "",
@@ -91,14 +124,18 @@ const LoginSignup = () => {
             confirmPassword: "",
             username: "",
           });
+          setFiles({
+            aadharCard: null,
+            certification: null,
+          });
           setFormStep(0);
           setIsSignUpMode(false);
         } else {
-          setError(response.data.message);
+          toast.error(response.data.message);
         }
       } catch (err) {
         console.error(err);
-        alert("An error occurred during sign-up.");
+        toast.error("An error occurred during sign-up.");
       }
     }
   };
@@ -108,7 +145,12 @@ const LoginSignup = () => {
       <Toaster />
       <div className="forms-container">
         <div className="signin-signup">
-          <form className="sign-up-form" onSubmit={handleSignUp}>
+          <form
+            className="sign-up-form"
+            encType="multipart/form-data"
+            method="POST"
+            onSubmit={handleSignUp}
+          >
             <h2 className="title">Create Account</h2>
 
             {formStep === 0 && (
@@ -194,12 +236,26 @@ const LoginSignup = () => {
               <div className="form-step">
                 <div className="file-upload">
                   <i className="fas fa-id-card"></i>
-                  <input type="file" accept=".jpg,.jpeg,.png,.pdf" required />
+                  <input
+                    type="file"
+                    accept=".jpg,.jpeg,.png,.pdf"
+                    name="aadharCard"
+                    onChange={handleFileChange}
+                    ref={aadharCardRef}
+                    required
+                  />
                   <h2>Upload Aadhaar/PAN Card</h2>
                 </div>
                 <div className="file-upload">
                   <i className="fas fa-file-alt"></i>
-                  <input type="file" accept=".jpg,.jpeg,.png,.pdf" required />
+                  <input
+                    type="file"
+                    accept=".jpg,.jpeg,.png,.pdf"
+                    name="certification"
+                    onChange={handleFileChange}
+                    ref={certificationRef}
+                    required
+                  />
                   <h2>Upload Certification</h2>
                 </div>
                 <div className="step-buttons">
@@ -281,6 +337,7 @@ const LoginSignup = () => {
                 placeholder="Password"
                 name="password"
                 value={formData.password}
+                autoComplete="password"
                 onChange={handleInputChange}
                 required
               />
