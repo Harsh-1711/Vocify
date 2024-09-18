@@ -7,11 +7,10 @@ const storage = multer.diskStorage({
     cb(null, "uploads/");
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Append date to the file name
+    cb(null, Date.now() + path.extname(file.originalname));
   },
 });
 
-// File filter to accept only certain types of files
 const fileFilter = (req, file, cb) => {
   if (
     file.mimetype === "image/jpeg" ||

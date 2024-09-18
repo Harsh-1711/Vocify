@@ -22,12 +22,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  aadhaarCard: {
+  aadharCard: {
     type: String,
+    required: true,
   },
   certification: {
     type: String,
+    required: true,
   },
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("sellers", userSchema);

@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 
 const handleSignup = async (req, res) => {
   const { name, email, phone, address, password, confirmPassword } = req.body;
-
+  // console.log(req.body);
   // Files are accessed through req.files
   const aadharCard = req.files?.aadharCard
     ? req.files.aadharCard[0].path
@@ -11,7 +11,7 @@ const handleSignup = async (req, res) => {
   const certification = req.files?.certification
     ? req.files.certification[0].path
     : null;
-
+  // console.log(req.files, certification);
   // Validation checks for non-file fields
   if (!name) {
     return res.status(400).json({ error: "Name is required" });
@@ -35,11 +35,12 @@ const handleSignup = async (req, res) => {
     return res.status(400).json({ error: "Aadhaar card is required" });
   }
   if (!certification) {
-    console.log("Certification");
     return res.status(400).json({ error: "Certification is required" });
   }
 
   try {
+    console.log(aadharCard);
+    console.log(certification);
     // Create the new user with all required fields, including file paths
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await User.create({

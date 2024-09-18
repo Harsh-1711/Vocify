@@ -6,10 +6,7 @@ const upload = require("../middlewares/multer");
 // Signup route with file uploads
 router.post(
   "/signup",
-  upload.fields([
-    { name: "aadharCard", maxCount: 1 },
-    { name: "certification", maxCount: 1 },
-  ]),
+  upload.fields([{ name: "aadharCard" }, { name: "certification" }]),
   handleSignup
 );
 

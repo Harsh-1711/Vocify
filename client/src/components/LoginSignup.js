@@ -40,7 +40,55 @@ const LoginSignup = () => {
     }));
   };
 
-  const nextStep = () => setFormStep((prevStep) => prevStep + 1);
+  const nextStep = () => {
+    if (formStep === 0) {
+      if (!formData.name || !formData.email) {
+        toast.error("Please fill out all fields.");
+        return false;
+      }
+      if (formData.name.length < 5 || formData.name.length > 20) {
+        toast.error("Full name must contain at least 5 characters.");
+        return false;
+      }
+      if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+        toast.error("Please enter a valid email ID.");
+        return false;
+      }
+    } else if (formStep === 1) {
+      if (!formData.phone || !formData.address) {
+        toast.error("Please fill out all fields.");
+        return false;
+      }
+      if (!/^\d{10}$/.test(formData.phone)) {
+        toast.error("Please enter a valid 10-digit phone number.");
+        return false;
+      }
+      if (formData.address.length < 10) {
+        toast.error("Address must be at least 10 characters long.");
+        return false;
+      }
+    } else if (formStep === 2) {
+      if (!files.aadharCard || !files.certification) {
+        toast.error("Please upload both Aadhaar card and certification.");
+        return false;
+      }
+    } else if (formStep === 3) {
+      if (!formData.password || !formData.confirmPassword) {
+        toast.error("Please fill out all fields.");
+        return false;
+      }
+      if (formData.password.length < 7 || formData.password.length > 15) {
+        toast.error("Password must be between 7 and 15 characters.");
+        return false;
+      }
+      if (formData.password !== formData.confirmPassword) {
+        toast.error("Passwords do not match.");
+        return false;
+      }
+    }
+    setFormStep((prevStep) => prevStep + 1);
+  };
+
   const previousStep = () => setFormStep((prevStep) => prevStep - 1);
 
   const handleSignUpClick = () => {
@@ -52,11 +100,55 @@ const LoginSignup = () => {
     setIsSignUpMode(false);
     setError(null);
   };
+  const validateSignUpForm = () => {
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.phone ||
+      !formData.password ||
+      !formData.confirmPassword ||
+      !formData.address
+    ) {
+      toast.error("Please fill out all fields.");
+      return false;
+    }
 
+    if (formData.name.length < 5 || formData.name.length > 20) {
+      toast.error("Full name must contain atleast 5 characters.");
+      return false;
+    }
+
+    if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      toast.error("Please enter a valid email ID.");
+      return false;
+    }
+    if (formData.phone.length < 10) {
+      toast.error("Please enter a valid phone number.");
+      return false;
+    }
+    if (!files.aadharCard) {
+      toast.error("Please upload your Aadhaar Card.");
+      return false;
+    }
+    if (!files.certification) {
+      toast.error("Please upload your Proof certificate.");
+      return false;
+    }
+    if (!formData.password.match(/^[A-Za-z0-9@#]{7,15}$/)) {
+      toast.error("Password must contain atleast 7 characters");
+      return false;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Passwords do not match.");
+      return false;
+    }
+
+    return true;
+  };
   const handleSignIn = async (e) => {
     e.preventDefault();
     const { email, password } = formData;
-
     try {
       const response = await axios.post(
         "http://localhost:8080/api/users/login",
@@ -80,11 +172,7 @@ const LoginSignup = () => {
     e.preventDefault();
     const { name, email, phone, address, password, confirmPassword } = formData;
 
-    if (!email || !password) {
-      toast.error("Please fill all required fields");
-    } else if (password !== confirmPassword) {
-      toast.error("Passwords do not match");
-    } else {
+    if (validateSignUpForm()) {
       // Create a new FormData object
       const formDataToSend = new FormData();
       formDataToSend.append("name", name);
@@ -318,6 +406,7 @@ const LoginSignup = () => {
           </form>
 
           <form className="sign-in-form" onSubmit={handleSignIn}>
+            <h2 className="title">Seller</h2>
             <h2 className="title">Sign in</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
