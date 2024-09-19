@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginSignup from "./components/LoginSignup";
 import UserLoginSignup from "./components/UserLoginSignup";
 import Home from "./components/Home";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function App() {
   return (

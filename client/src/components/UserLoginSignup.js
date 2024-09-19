@@ -1,24 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../userlogin.css"; // Assuming you have the styles in this file
-import toast, { Toaster } from "react-hot-toast"; // Importing react-hot-toast
+import "../userlogin.css";
+import toast, { Toaster } from "react-hot-toast";
 
 const UserLoginSignup = () => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
-  const [formStep, setFormStep] = useState(0); // Step state management
+  const [formStep, setFormStep] = useState(0);
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     password: "",
-    confirmPassword: "", // Added confirmPassword
+    confirmPassword: "",
     address: "",
     state: "",
     zip: "",
   });
   const nextStep = () => {
-    // Validate each step
     if (formStep === 0) {
       if (!formData.name || !formData.email || !formData.phone) {
         toast.error("Please fill out all fields.");
