@@ -17,13 +17,13 @@ const buyerSchema = new mongoose.Schema({
   phone: {
     type: String,
     required: true,
-    match: /^[0-9]{10}$/, // Assuming phone numbers have 10 digits
+    match: /^[0-9]{10}$/,
   },
   password: {
     type: String,
     required: true,
     minlength: 7,
-    maxlength: 1024, // Increased length for bcrypt hashed passwords
+    maxlength: 1024,
   },
   address: {
     type: String,
@@ -36,7 +36,7 @@ const buyerSchema = new mongoose.Schema({
   zip: {
     type: String,
     required: true,
-    match: /^[0-9]{5,10}$/, // Assuming ZIP codes between 5 and 10 digits
+    match: /^[0-9]{5,10}$/,
   },
   createdAt: {
     type: Date,
@@ -44,11 +44,10 @@ const buyerSchema = new mongoose.Schema({
   },
 });
 
-// Method to compare provided password with hashed password
 buyerSchema.methods.matchPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
-const Buyer = mongoose.model("buyers", buyerSchema);
+const Buyer = mongoose.model("users", buyerSchema);
 
 module.exports = Buyer;

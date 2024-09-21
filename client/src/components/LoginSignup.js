@@ -2,10 +2,12 @@ import React, { useState, useRef } from "react";
 import axios from "axios";
 import "../vocify.css";
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const LoginSignup = () => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [formStep, setFormStep] = useState(0);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -160,8 +162,9 @@ const LoginSignup = () => {
       const user = response.data.user;
       console.log("User: ", user.email);
       toast.success(response.data.msg || "Login complete");
-      // Redirect to home page after login
-      window.location.href = "/home";
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.error);
@@ -173,7 +176,6 @@ const LoginSignup = () => {
     const { name, email, phone, address, password, confirmPassword } = formData;
 
     if (validateSignUpForm()) {
-      // Create a new FormData object
       const formDataToSend = new FormData();
       formDataToSend.append("name", name);
       formDataToSend.append("email", email);
@@ -182,7 +184,6 @@ const LoginSignup = () => {
       formDataToSend.append("password", password);
       formDataToSend.append("confirmPassword", confirmPassword);
 
-      // Append file inputs
       if (files.aadharCard) {
         formDataToSend.append("aadharCard", files.aadharCard);
       }
@@ -196,7 +197,7 @@ const LoginSignup = () => {
           formDataToSend,
           {
             headers: {
-              "Content-Type": "multipart/form-data", // Required for file uploads
+              "Content-Type": "multipart/form-data",
             },
           }
         );
@@ -444,7 +445,9 @@ const LoginSignup = () => {
         <div className="panel left-panel">
           <div className="content">
             <h3>New here?</h3>
-            <p>Create an account to get started.</p>
+            <p className="p1" style={{ color: "white" }}>
+              Create an account to get started.
+            </p>
             <button className="btn transparent" onClick={handleSignUpClick}>
               Sign up
             </button>
@@ -453,7 +456,7 @@ const LoginSignup = () => {
         <div className="panel right-panel">
           <div className="content">
             <h3>One of us?</h3>
-            <p>
+            <p className="p1" style={{ color: "white" }}>
               If you already have an account, just sign in. We've missed you!
             </p>
             <button className="btn transparent" onClick={handleSignInClick}>

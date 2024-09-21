@@ -34,10 +34,90 @@ h6 {
 
 p {
     font-size: 20px;
-    color: #ba4795;
+    color: #4f4d4d;
     margin: 15px 0 20px 0;
     font-weight: 600;
 }
+
+.user-icon {
+    position: relative;
+    /* Needed for the tooltip positioning */
+    cursor: pointer;
+    /* Change cursor to pointer */
+}
+
+.tooltip {
+    visibility: hidden;
+    /* Hide tooltip by default */
+    position: absolute;
+    bottom: 100%;
+    /* Position above the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    /* Tooltip background color */
+    color: #fff;
+    /* Tooltip text color */
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    z-index: 1000;
+    margin-bottom: 5px;
+    /* Space between icon and tooltip */
+}
+
+.user-icon:hover .tooltip {
+    visibility: visible;
+    /* Show tooltip on hover */
+}
+
+.dropdown-menu {
+    position: absolute;
+    /* Position it below the icon */
+    right: 0;
+    /* left: 5px; */
+    /* Align to the right */
+    background-color: white;
+    /* Background color */
+    border: 1px solid #ccc;
+    /* Border */
+    border-radius: 5px;
+    /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    /* Shadow effect */
+    z-index: 1000;
+    /* Ensure it appears above other elements */
+    padding: 10px 0;
+    /* Vertical padding around the items */
+    min-width: 180px;
+    /* Increase minimum width */
+}
+
+.dropdown-menu a {
+    display: block;
+    /* Make links block-level */
+    padding: 10px 15px;
+    /* Padding for links */
+    color: #333;
+    /* Link color */
+    text-decoration: none;
+    /* Remove underline */
+    transition: background-color 0.2s;
+    /* Smooth transition for hover */
+    white-space: nowrap;
+    /* Prevent text from wrapping */
+}
+
+.dropdown-menu a:hover {
+    background-color: #e0e0e0;
+    /* Change background color on hover */
+    color: #000;
+    /* Darker text on hover */
+    font-weight: bold;
+    /* Bold text on hover */
+}
+
+
 
 .section-p1 {
     padding: 40px 80px;
@@ -312,17 +392,14 @@ body {
     /* Space between image and title */
 }
 
-.title {
+/* .title {
     font-size: 1rem;
-    /* Title font size */
+    
     font-weight: bold;
-    /* Makes the title bold */
     color: #171b19;
-    /* Text color */
     margin: 0;
-    /* Removes default margin */
     font-size: italic;
-}
+} */
 
 
 #product1 {

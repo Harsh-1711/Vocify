@@ -1,5 +1,3 @@
-import React from "react";
-
 const myObject = {
   id: 1,
   images: [

@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../userlogin.css";
+import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { useAuth } from "./AuthContext";
 
 const UserLoginSignup = () => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [formStep, setFormStep] = useState(0);
-
+  const navigate = useNavigate();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,6 +20,7 @@ const UserLoginSignup = () => {
     state: "",
     zip: "",
   });
+
   const nextStep = () => {
     if (formStep === 0) {
       if (!formData.name || !formData.email || !formData.phone) {
@@ -110,8 +114,10 @@ const UserLoginSignup = () => {
         );
         toast.success("Login successful");
         console.log("Login successful", response.data);
-        // Optionally, you can redirect the user or update the UI
-        window.location.href = "/SellerHome";
+        login(response.data.user);
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
       } catch (error) {
         const errorMessage =
           error.response?.data?.error ||
@@ -130,6 +136,7 @@ const UserLoginSignup = () => {
         .then((response) => {
           toast.success("Sign-up successful");
           console.log("Sign-up successful", response.data);
+          login(response.data.user);
           setFormData({
             name: "",
             email: "",
@@ -153,164 +160,6 @@ const UserLoginSignup = () => {
         });
     }
   };
-
-  //   return (
-  //     <div className={`container ${isSignUpMode ? "sign-up-mode" : ""}`}>
-  //       <Toaster /> {/* Toast notification container */}
-  //       <div className="forms-container">
-  //         <div className="signin-signup">
-  //           {/* Sign-in Form */}
-  //           <form className="sign-in-form" onSubmit={handleSignIn}>
-  //             <h2 className="title">Sign in</h2>
-  //             <div className="input-field">
-  //               <i className="fas fa-user"></i>
-  //               <input
-  //                 type="email"
-  //                 placeholder="Email"
-  //                 name="email"
-  //                 value={formData.email}
-  //                 onChange={handleInputChange}
-  //                 required
-  //               />
-  //             </div>
-  //             <div className="input-field">
-  //               <i className="fas fa-lock"></i>
-  //               <input
-  //                 type="password"
-  //                 placeholder="Password"
-  //                 name="password"
-  //                 value={formData.password}
-  //                 onChange={handleInputChange}
-  //                 required
-  //               />
-  //             </div>
-  //             <input type="submit" value="Login" className="btn solid" />
-  //           </form>
-
-  //           {/* Sign-up Form */}
-  //           <form className="sign-up-form" onSubmit={handleSignUp}>
-  //             <h2 className="title">Sign up</h2>
-  //             <div className="input-field">
-  //               <i className="fas fa-user"></i>
-  //               <input
-  //                 type="text"
-  //                 placeholder="Username"
-  //                 name="name"
-  //                 value={formData.name}
-  //                 onChange={handleInputChange}
-  //                 required
-  //               />
-  //             </div>
-  //             <div className="input-field">
-  //               <i className="fas fa-envelope"></i>
-  //               <input
-  //                 type="email"
-  //                 placeholder="Email"
-  //                 name="email"
-  //                 value={formData.email}
-  //                 onChange={handleInputChange}
-  //                 required
-  //               />
-  //             </div>
-  //             <div className="input-field">
-  //               <i className="fas fa-phone"></i>
-  //               <input
-  //                 type="text"
-  //                 placeholder="Phone Number"
-  //                 name="phone"
-  //                 value={formData.phone}
-  //                 onChange={handleInputChange}
-  //                 required
-  //               />
-  //             </div>
-  //             <div className="input-field">
-  //               <i className="fas fa-lock"></i>
-  //               <input
-  //                 type="password"
-  //                 placeholder="Password"
-  //                 name="password"
-  //                 value={formData.password}
-  //                 onChange={handleInputChange}
-  //                 required
-  //               />
-  //             </div>
-  //             <div className="input-field">
-  //               <i className="fas fa-lock"></i>
-  //               <input
-  //                 type="password"
-  //                 placeholder="Confirm Password"
-  //                 name="confirmPassword"
-  //                 value={formData.confirmPassword}
-  //                 onChange={handleInputChange}
-  //                 required
-  //               />
-  //             </div>
-  //             <div className="input-field">
-  //               <i className="fas fa-home"></i>
-  //               <input
-  //                 type="text"
-  //                 placeholder="Complete Address"
-  //                 name="address"
-  //                 value={formData.address}
-  //                 onChange={handleInputChange}
-  //                 required
-  //               />
-  //             </div>
-  //             <div className="input-field">
-  //               <i className="fas fa-briefcase"></i>
-  //               <input
-  //                 type="text"
-  //                 placeholder="State/Province"
-  //                 name="state"
-  //                 value={formData.state}
-  //                 onChange={handleInputChange}
-  //                 required
-  //               />
-  //             </div>
-  //             <div className="input-field">
-  //               <i className="fas fa-map-marker-alt"></i>
-  //               <input
-  //                 type="text"
-  //                 placeholder="ZIP/Postal Code"
-  //                 name="zip"
-  //                 value={formData.zip}
-  //                 onChange={handleInputChange}
-  //                 required
-  //               />
-  //             </div>
-  //             <input type="submit" value="Sign up" className="btn solid" />
-  //           </form>
-  //         </div>
-  //       </div>
-  //       <div className="panels-container">
-  //         <div className="panel left-panel">
-  //           <div className="content">
-  //             <h3>New here?</h3>
-  //             <p>Join us to work productively, fruitfully, and efficiently.</p>
-  //             <button
-  //               className="btn transparent"
-  //               onClick={() => setIsSignUpMode(true)}
-  //             >
-  //               Sign up
-  //             </button>
-  //           </div>
-  //         </div>
-  //         <div className="panel right-panel">
-  //           <div className="content">
-  //             <h3>One of us?</h3>
-  //             <p>Welcome back! Stay tuned for more new features!</p>
-  //             <button
-  //               className="btn transparent"
-  //               onClick={() => setIsSignUpMode(false)}
-  //             >
-  //               Sign in
-  //             </button>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // };
   return (
     <div className={`container ${isSignUpMode ? "sign-up-mode" : ""}`}>
       <Toaster /> {/* Toast notification container */}
@@ -318,7 +167,7 @@ const UserLoginSignup = () => {
         <div className="signin-signup">
           {/* Sign-in Form */}
           <form className="sign-in-form" onSubmit={handleSignIn}>
-            <h2 className="title">Sign in</h2>
+            <h2 className="title1">Sign in</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
               <input
@@ -327,6 +176,7 @@ const UserLoginSignup = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
+                autoComplete="off"
                 required
               />
             </div>
@@ -346,7 +196,9 @@ const UserLoginSignup = () => {
 
           {/* Sign-up Form */}
           <form className="sign-up-form" onSubmit={handleSignUp}>
-            <h2 className="title">Sign up</h2>
+            <h2 className="title1" id="title1">
+              Sign up
+            </h2>
 
             {formStep === 0 && (
               <>
@@ -358,6 +210,7 @@ const UserLoginSignup = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
+                    autoComplete="off"
                     required
                   />
                 </div>
@@ -369,6 +222,7 @@ const UserLoginSignup = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
+                    autoComplete="off"
                     required
                   />
                 </div>
@@ -380,6 +234,7 @@ const UserLoginSignup = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
+                    autoComplete="off"
                     required
                   />
                 </div>
@@ -474,7 +329,9 @@ const UserLoginSignup = () => {
         <div className="panel left-panel">
           <div className="content">
             <h3>New here?</h3>
-            <p>Join us to work productively, fruitfully, and efficiently.</p>
+            <p style={{ color: "white" }}>
+              Join us to work productively, fruitfully, and efficiently.
+            </p>
             <button
               className="btn transparent"
               onClick={() => setIsSignUpMode(true)}
@@ -486,7 +343,9 @@ const UserLoginSignup = () => {
         <div className="panel right-panel">
           <div className="content">
             <h3>One of us?</h3>
-            <p>Welcome back! Stay tuned for more new features!</p>
+            <p style={{ color: "white" }}>
+              Welcome back! Stay tuned for more new features!
+            </p>
             <button
               className="btn transparent"
               onClick={() => setIsSignUpMode(false)}

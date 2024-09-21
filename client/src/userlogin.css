@@ -12,6 +12,10 @@ input {
     font-family: "Poppins", sans-serif;
 }
 
+.p1 p {
+    color: white;
+}
+
 .container {
     position: relative;
     width: 100%;
@@ -61,7 +65,7 @@ form.sign-in-form {
     z-index: 2;
 }
 
-.title {
+.title1 {
     font-size: 2.2rem;
     color: #98b5ae;
     margin-bottom: 10px;
