@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt"); // Import bcrypt
+const bcrypt = require("bcrypt");
 
 const buyerSchema = new mongoose.Schema({
   name: {

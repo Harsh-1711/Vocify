@@ -1,0 +1,381 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#header .logo {
+    width: 100px;
+    /* Adjust the logo size */
+}
+
+.logo {
+    display: inline;
+    align-items: center;
+    font-size: 24px;
+    /* Size of the logo text */
+    font-weight: bold;
+    /* Bold text */
+    color: #088178;
+    /* Logo text color */
+    text-decoration: none;
+    /* Remove underline */
+}
+
+.logo i {
+    margin-right: 10px;
+    /* Spacing between icon and text */
+    font-size: 20px;
+    /* Icon size */
+    margin-left: 20px;
+    margin-top: 5px;
+    color: #088178;
+    /* Icon color */
+}
+
+/* Logo Hover Effect */
+.logo:hover {
+    color: #055f5b;
+    /* Change color on hover */
+}
+
+.logo i:hover {
+    color: #055f5b;
+    /* Change icon color on hover */
+}
+
+/* Navbar Styling */
+nav {
+    flex-grow: 1;
+}
+
+#navbar {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#navbar li {
+    margin: 0 20px;
+}
+
+#navbar li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#navbar li a.active {
+    color: #008080;
+    /* Highlight for active link */
+}
+
+#navbar li a:hover {
+    color: #008080;
+}
+
+/* Cart Icon Styling */
+#navbar li a i {
+    font-size: 20px;
+}
+
+/* #page-header.about-header {
+    
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 100px 0; 
+    text-align: center; 
+    color: rgb(255, 255, 255); 
+} */
+/* Hero Banner Container Styling */
+.hero-banner-container {
+    width: 100%;
+    height: 400px;
+    /* Adjust the height based on your design */
+    background-color: #eef;
+    /* Optional background color */
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* Hides any overflow of the image */
+}
+
+.hero-banner-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* Ensures the image fills the area while maintaining its aspect ratio */
+    border-radius: 8px;
+    /* Optional: Adds rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    /* Adds a shadow for depth */
+}
+
+
+/* Campaign Section */
+.section-p1 {
+    position: relative;
+}
+
+.campaign-banner {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.campaign-banner img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    filter: brightness(70%);
+}
+
+
+
+.section-p2 {
+    padding: 50px;
+    background-color: #f9f9f9;
+}
+
+.campaign-info h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.campaign-info p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.campaign-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.campaign-info ul li {
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin: 10px 0;
+    border-left: 5px solid #ff6347;
+}
+
+.section-p3 {
+    padding: 50px;
+    text-align: center;
+    background-color: #fff;
+}
+
+/* Previous Campaigns Section */
+.section-p5 {
+    padding: 50px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.section-p5 h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.campaign-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.campaign-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.campaign-card:hover {
+    transform: translateY(-10px);
+}
+
+.campaign-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.campaign-info {
+    padding: 20px;
+}
+
+.campaign-info h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.campaign-info p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Default Button Style */
+button,
+.btn {
+    background-color: #98b5ae;
+    /* Light Greenish color */
+    color: white;
+    /* White text */
+    padding: 10px 20px;
+    /* Padding around the button */
+    border: none;
+    /* No border */
+    border-radius: 5px;
+    /* Rounded corners */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    font-size: 1em;
+    /* Font size */
+    transition: background-color 0.3s ease;
+    /* Smooth transition for hover */
+}
+
+/* Hover State */
+button:hover,
+.btn:hover {
+    background-color: #7a9e95;
+    /* Darker shade on hover */
+}
+
+/* Focus State */
+button:focus,
+.btn:focus {
+    outline: none;
+    /* Remove default outline */
+    background-color: #86a69c;
+    /* Slightly lighter color when focused */
+}
+
+/* Active State */
+button:active,
+.btn:active {
+    background-color: #98b5ae;
+    /* Reset to original color when pressed */
+    transform: translateY(2px);
+    /* Give a small press effect */
+}
+
+.progress-container {
+    width: 80%;
+    height: 30px;
+    background-color: #f4f4f4;
+    margin: 20px auto;
+    border-radius: 20px;
+}
+
+.progress-bar {
+    width: 65%;
+    height: 100%;
+    background-color: #ff6347;
+    border-radius: 20px;
+    position: relative;
+}
+
+#progressLabel {
+    position: absolute;
+    right: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+
+.section-p4 {
+    padding: 50px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+#donation-form {
+    display: inline-block;
+}
+
+#donation-form input {
+    padding: 10px;
+    margin-right: 10px;
+}
+
+
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+footer .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+}
+
+footer .logo {
+    /* background-image: url("public\img\Banner.png"); */
+    min-width: 30%;
+    margin-bottom: 10px;
+    min-height: 5vh;
+
+}
+
+footer h4 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    padding-bottom: 20px;
+    font-weight: 600;
+}
+
+footer p {
+    font-size: 15px;
+    margin: 0 0 8px 0;
+    font-weight: 400;
+
+}
+
+footer a {
+    font-size: 15px;
+    text-decoration: none;
+    color: #222;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+footer .follow {
+    margin-top: 20px;
+
+}
+
+footer .follow i {
+    color: #465b52;
+    padding-right: 4px;
+    cursor: pointer;
+}
+
+footer .install .row img {
+    border: 1px solid #088178;
+    border-radius: 6px;
+}
+
+footer .install img {
+    margin: 10px 0 15px 0;
+}
+
+footer .follow i:hover,
+footer {
+    color: #088178;
+}

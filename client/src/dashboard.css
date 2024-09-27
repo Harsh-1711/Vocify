@@ -1,0 +1,263 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+#header .logo {
+    width: 100px;
+    /* Adjust the logo size */
+}
+
+.logo {
+    display: inline;
+    align-items: center;
+    font-size: 24px;
+    /* Size of the logo text */
+    font-weight: bold;
+    /* Bold text */
+    color: #088178;
+    /* Logo text color */
+    text-decoration: none;
+    /* Remove underline */
+}
+
+.logo i {
+    margin-right: 10px;
+    /* Spacing between icon and text */
+    font-size: 20px;
+    /* Icon size */
+    margin-left: 20px;
+    margin-top: 5px;
+    color: #088178;
+    /* Icon color */
+}
+
+/* Logo Hover Effect */
+.logo:hover {
+    color: #055f5b;
+    /* Change color on hover */
+}
+
+.logo i:hover {
+    color: #055f5b;
+    /* Change icon color on hover */
+}
+
+/* header {
+    background-color: white;
+    color: rgb(0, 0, 0);
+    padding: 1em;
+    text-align: center;
+    box-shadow: 0 2px 5px ;
+} */
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header nav ul li {
+    margin: 0 1em;
+}
+
+header nav ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+.hero-image {
+    width: 100%;
+    height: 300px;
+    background-image: url("../public/img/opening.jpg");
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 30px;
+}
+
+main {
+    padding: 2em;
+}
+
+h2 {
+    color: #333;
+}
+
+.dashboard-cards {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2em;
+}
+
+.card {
+    background-color: white;
+    padding: 1em;
+    border-radius: 5px;
+    width: 30%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#product-form,
+#product-list {
+    background-color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-top: 0.5rem;
+}
+
+input,
+textarea {
+    width: 95%;
+    padding: 0.5rem;
+    margin-top: 0.2rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #98b5ae;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #98b5ae;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-img {
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 1rem;
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+}
+
+.order-summary {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2em;
+}
+
+.order-summary .card {
+    background-color: white;
+    padding: 1em;
+    border-radius: 5px;
+    width: 22%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.order-summary .card h3 {
+    color: #333;
+    margin-bottom: 0.5em;
+}
+
+.order-summary .card p {
+    font-size: 1.5em;
+    color: #98b5ae;
+}
+
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2em;
+}
+
+.order-table thead {
+    background-color: #98b5ae;
+    color: white;
+}
+
+.order-table th,
+.order-table td {
+    padding: 1em;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.order-table th {
+    text-align: center;
+}
+
+.order-table td {
+    background-color: #f9f9f9;
+}
+
+.order-table tr:nth-child(even) td {
+    background-color: #f0f0f0;
+}
+
+.order-table button {
+    padding: 0.5em 1em;
+    margin: 0.2em 0;
+    background-color: #98b5ae;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.order-table button:hover {
+    background-color: #98b5ae;
+}
+
+#order-details {
+    background-color: white;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2em;
+}
+
+#order-details h3 {
+    color: #333;
+    margin-bottom: 1em;
+}
+
+#order-details p {
+    margin: 0.5em 0;
+}
+
+#order-details button {
+    padding: 0.5em 1em;
+    background-color: #98b5ae;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#order-details button:hover {
+    background-color: #98b5ae;
+}

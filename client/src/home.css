@@ -34,90 +34,10 @@ h6 {
 
 p {
     font-size: 20px;
-    color: #4f4d4d;
+    color: #ba4795;
     margin: 15px 0 20px 0;
     font-weight: 600;
 }
-
-.user-icon {
-    position: relative;
-    /* Needed for the tooltip positioning */
-    cursor: pointer;
-    /* Change cursor to pointer */
-}
-
-.tooltip {
-    visibility: hidden;
-    /* Hide tooltip by default */
-    position: absolute;
-    bottom: 100%;
-    /* Position above the icon */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #333;
-    /* Tooltip background color */
-    color: #fff;
-    /* Tooltip text color */
-    text-align: center;
-    border-radius: 4px;
-    padding: 5px;
-    z-index: 1000;
-    margin-bottom: 5px;
-    /* Space between icon and tooltip */
-}
-
-.user-icon:hover .tooltip {
-    visibility: visible;
-    /* Show tooltip on hover */
-}
-
-.dropdown-menu {
-    position: absolute;
-    /* Position it below the icon */
-    right: 0;
-    /* left: 5px; */
-    /* Align to the right */
-    background-color: white;
-    /* Background color */
-    border: 1px solid #ccc;
-    /* Border */
-    border-radius: 5px;
-    /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    /* Shadow effect */
-    z-index: 1000;
-    /* Ensure it appears above other elements */
-    padding: 10px 0;
-    /* Vertical padding around the items */
-    min-width: 180px;
-    /* Increase minimum width */
-}
-
-.dropdown-menu a {
-    display: block;
-    /* Make links block-level */
-    padding: 10px 15px;
-    /* Padding for links */
-    color: #333;
-    /* Link color */
-    text-decoration: none;
-    /* Remove underline */
-    transition: background-color 0.2s;
-    /* Smooth transition for hover */
-    white-space: nowrap;
-    /* Prevent text from wrapping */
-}
-
-.dropdown-menu a:hover {
-    background-color: #e0e0e0;
-    /* Change background color on hover */
-    color: #000;
-    /* Darker text on hover */
-    font-weight: bold;
-    /* Bold text on hover */
-}
-
-
 
 .section-p1 {
     padding: 40px 80px;
@@ -156,6 +76,7 @@ button.white {
 body {
     width: 100%;
 }
+
 
 /* Header start */
 
@@ -392,14 +313,17 @@ body {
     /* Space between image and title */
 }
 
-/* .title {
+.title {
     font-size: 1rem;
-    
+    /* Title font size */
     font-weight: bold;
+    /* Makes the title bold */
     color: #171b19;
+    /* Text color */
     margin: 0;
+    /* Removes default margin */
     font-size: italic;
-} */
+}
 
 
 #product1 {
@@ -621,6 +545,7 @@ body {
 
 #banner3 .banner-box2 {
     background-image: url("../public/img/p1.jpeg");
+    /* background-image: url("../"); */
 }
 
 #banner3 .banner-box3 {
@@ -632,6 +557,13 @@ body {
     font-weight: 900;
     font-size: 15px;
 }
+
+.active {
+    font-weight: bold;
+    /* Example style */
+    color: blue;
+}
+
 
 #banner3 h3 {
     color: #aeb1c7;
@@ -887,6 +819,20 @@ footer {
 
 }
 
+#page-header.about-header {
+    background-image: url("../public/img/_con.jpg");
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Dark overlay */
+    padding: 100px 0;
+    /* Adds space for text */
+    text-align: center;
+    /* Centers text */
+    color: rgb(255, 255, 255);
+    /* Ensures text is visible */
+}
+
 #contact-details .details h2,
 #form-details form h2 {
     font-size: 20px;
@@ -917,20 +863,33 @@ footer {
 }
 
 #contact-details .map {
-    width: 55%;
-    height: 400px;
+    width: 100%;
+    height: 500px;
 }
 
 #contact-details .map iframe {
-    width: 55%;
-    height: 400px;
+    width: 100%;
+    height: 500px;
+    border: none;
 }
 
 #form-details form {
-    width: 65%;
+    width: 80%;
+    /* Adjust the form width as needed */
+    max-width: 500px;
+    /* Limit the maximum width of the form */
+    padding: 20px;
+    /* Add some padding for aesthetics */
+    background-color: #f9f9f9;
+    /* Background color for form */
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    /* Add a shadow for depth */
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    /* Align inputs vertically */
+    align-items: center;
 }
 
 #form-details form input,
@@ -940,19 +899,42 @@ footer {
     outline: none;
     margin-bottom: 20px;
     border: 1px solid #e1e1e1;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: flex-start; */
+}
+
+#form-details {
     display: flex;
+    justify-content: center;
+    /* Centers horizontally */
+    align-items: center;
+    /* Centers vertically */
+    height: 100vh;
+    /* Full viewport height for centering */
     flex-direction: column;
-    align-items: flex-start;
+    /* Align items in a column */
 }
 
 #form-details form button {
     background-color: #088178;
     color: #fff;
+    width: 100%;
+    background-color: #088178;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#form-details form button:hover {
+    background-color: #065a53;
 
 }
 
 /* Popup Modal */
-.modal {
+/* .modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -1007,7 +989,7 @@ footer {
 
 .modal-close:hover {
     color: #000;
-}
+} */
 
 
 /* cart */
@@ -1055,3 +1037,180 @@ footer {
     border-left: none;
     border-right: n;
 }
+
+/* course */
+#page-header.about-header {
+
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Dark overlay */
+    padding: 100px 0;
+    /* Adds space for text */
+    text-align: center;
+    /* Centers text */
+    color: rgb(255, 255, 255);
+    /* Ensures text is visible */
+}
+
+section {
+    padding: 20px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.course-grid,
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.course-card,
+.product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+}
+
+.course-card img,
+.product-card img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.btn {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background-color: #4cae4c;
+}
+
+.game-container {
+    text-align: center;
+}
+
+#game-result {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Cart Section */
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.cart-item-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-item-details {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.cart-item-details h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.cart-item-details p {
+    font-size: 16px;
+    color: #555;
+}
+
+.remove-btn {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: #ff4500;
+}
+
+#payment-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    width: 90%;
+    max-width: 400px;
+    /* Adjust the maximum width as needed */
+}
+
+.payment-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.payment-btn {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.payment-btn:hover {
+    background-color: #45a049;
+}
+
+/* Other sections (newsletter, footer, etc.) should inherit from your existing CSS. */

@@ -1,0 +1,296 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+}
+
+/* Centering Latest Courses */
+#latest-courses {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.course-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.course-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.course-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+#latest-courses h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Centering the Engage & Win Game */
+#games {
+    text-align: center;
+    margin: 40px 0;
+}
+
+#game {
+    display: inline-block;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+#game h3 {
+    font-size: 1.5em;
+}
+
+#game input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 200px;
+}
+
+#game-result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #2c3e50;
+}
+
+/* General Button Styling */
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+
+
+#header .logo {
+    width: 100px;
+    /* Adjust the logo size */
+}
+
+.logo {
+    display: inline;
+    align-items: center;
+    font-size: 24px;
+    /* Size of the logo text */
+    font-weight: bold;
+    /* Bold text */
+    color: #088178;
+    /* Logo text color */
+    text-decoration: none;
+    /* Remove underline */
+}
+
+.logo i {
+    margin-right: 10px;
+    /* Spacing between icon and text */
+    font-size: 20px;
+    /* Icon size */
+    margin-left: 20px;
+    margin-top: 5px;
+    color: #088178;
+    /* Icon color */
+}
+
+/* Logo Hover Effect */
+.logo:hover {
+    color: #055f5b;
+    /* Change color on hover */
+}
+
+.logo i:hover {
+    color: #055f5b;
+    /* Change icon color on hover */
+}
+
+/* Navbar Styling */
+nav {
+    flex-grow: 1;
+}
+
+#navbar {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#navbar li {
+    margin: 0 20px;
+}
+
+#navbar li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#navbar li a.active {
+    color: #008080;
+    /* Highlight for active link */
+}
+
+#navbar li a:hover {
+    color: #008080;
+}
+
+/* Cart Icon Styling */
+#navbar li a i {
+    font-size: 20px;
+}
+
+#page-header.about-header {
+
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Dark overlay */
+    padding: 100px 0;
+    /* Adds space for text */
+    text-align: center;
+    /* Centers text */
+    color: rgb(255, 255, 255);
+    /* Ensures text is visible */
+}
+
+section {
+    padding: 20px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.course-grid,
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.course-card,
+.product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+}
+
+.course-card img,
+.product-card img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.btn {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background-color: #4cae4c;
+}
+
+.game-container {
+    text-align: center;
+}
+
+#game-result {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+footer .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+}
+
+footer .logo {
+    /* background-image: url("img/logo.jpeg"); */
+    min-width: 30%;
+    margin-bottom: 10px;
+    min-height: 5vh;
+
+}
+
+footer h4 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    padding-bottom: 20px;
+    font-weight: 600;
+}
+
+footer p {
+    font-size: 15px;
+    margin: 0 0 8px 0;
+    font-weight: 400;
+
+}
+
+footer a {
+    font-size: 15px;
+    text-decoration: none;
+    color: #222;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+footer .follow {
+    margin-top: 20px;
+
+}
+
+footer .follow i {
+    color: #465b52;
+    padding-right: 4px;
+    cursor: pointer;
+}
+
+footer .install .row img {
+    border: 1px solid #088178;
+    border-radius: 6px;
+}
+
+footer .install img {
+    margin: 10px 0 15px 0;
+}
+
+footer .follow i:hover,
+footer {
+    color: #088178;
+}

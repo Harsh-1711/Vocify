@@ -3,7 +3,7 @@ import axios from "axios";
 import "../userlogin.css";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "./AuthContext.js";
 
 const UserLoginSignup = () => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
@@ -118,6 +118,10 @@ const UserLoginSignup = () => {
         setTimeout(() => {
           navigate("/");
         }, 1000);
+        setFormData({
+          email: "",
+          password: "",
+        });
       } catch (error) {
         const errorMessage =
           error.response?.data?.error ||
@@ -329,9 +333,7 @@ const UserLoginSignup = () => {
         <div className="panel left-panel">
           <div className="content">
             <h3>New here?</h3>
-            <p style={{ color: "white" }}>
-              Join us to work productively, fruitfully, and efficiently.
-            </p>
+            <p style={{ color: "white" }}>Be the reason of their smile:) </p>
             <button
               className="btn transparent"
               onClick={() => setIsSignUpMode(true)}

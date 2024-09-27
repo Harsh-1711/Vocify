@@ -1,0 +1,313 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Header Styling */
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #E9ECF6;
+    /* Light blue background */
+}
+
+#header .logo {
+    width: 100px;
+    /* Adjust the logo size */
+}
+
+/* Navbar Styling */
+nav {
+    flex-grow: 1;
+}
+
+#navbar {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#navbar li {
+    margin: 0 20px;
+}
+
+#navbar li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#navbar li a.active {
+    color: #008080;
+    /* Highlight for active link */
+}
+
+#navbar li a:hover {
+    color: #008080;
+}
+
+/* Cart Icon Styling */
+#navbar li a i {
+    font-size: 20px;
+}
+
+
+#page-header.about-header {
+    background-image: url("../public/img/banner.png");
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Dark overlay */
+    padding: 100px 0;
+    /* Adds space for text */
+    text-align: center;
+    /* Centers text */
+    color: rgb(255, 255, 255);
+    /* Ensures text is visible */
+
+}
+
+#about-head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /* Centers items horizontally */
+    padding: 50px;
+}
+
+#about-head img {
+    width: 40%;
+    /* Adjust image size to match reference */
+    height: auto;
+}
+
+#about-head div {
+    padding-left: 40px;
+    max-width: 50%;
+    /* Controls the width of the text section */
+}
+
+#about-head h2 {
+    color: #d74db0;
+    font-size: 2.5em;
+    /* Larger font size for heading */
+    margin-bottom: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#about-head p {
+    font-size: 1.2em;
+    /* Adjust paragraph size */
+    font-family: 'Times New Roman', Times, serif;
+    color: #000000;
+}
+
+#marquee {
+    background-color: #8bd758;
+    margin-top: 20px;
+    padding: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#about-app {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+    color: #824dd7;
+}
+
+#about-app .video {
+    width: 70%;
+    margin: 30px auto;
+    /* Centers the video horizontally */
+    height: auto;
+    /* Set the height to auto to maintain aspect ratio */
+}
+
+#about-app .video video {
+    width: 100%;
+    height: auto;
+    /* Keeps the video aspect ratio */
+    border-radius: 20px;
+}
+
+
+.feature-cards {
+    display: flex;
+    /* Use flexbox to align items horizontally */
+    justify-content: center;
+    /* Add space between the cards */
+    flex-wrap: wrap;
+    /* Wrap the cards to the next row if necessary */
+    gap: 20px;
+    /* Adds gap between cards */
+    padding: 20px;
+    /* Optional padding around the container */
+    background-color: #f8f8f8;
+}
+
+
+.card {
+    background: #fcfdfa;
+    /* Card background color */
+    border: 1px solid #dfd8d8;
+    /* Light border */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    width: 150px;
+    /* Set width of each card */
+    padding: 20px;
+    /* Padding inside each card */
+    text-align: center;
+    /* Center-aligns text and images */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth animation */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    /* Slight lift effect on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    /* Enhanced shadow on hover */
+}
+
+.card img {
+    width: 80px;
+    /* Size of the images */
+    height: auto;
+    /* Maintains aspect ratio */
+    margin-bottom: 10px;
+    /* Space between image and title */
+}
+
+.title {
+    font-size: 0.5rem;
+    /* Title font size */
+    font-weight: bold;
+    /* Makes the title bold */
+    color: #171b19;
+    /* Text color */
+    margin: 0;
+    /* Removes default margin */
+    font-size: italic;
+}
+
+
+
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+footer .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+
+footer.section-p1 {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f8f8f8;
+    /* Adjusted background */
+    padding: 20px 80px;
+    font-family: Arial, sans-serif;
+    color: #333333;
+    /* Dark gray for text */
+}
+
+footer .col h4 {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000000;
+    /* Black for headings */
+    font-family: 'Times New Roman', Times, serif;
+}
+
+footer .col p,
+footer .install p {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 16px;
+    color: #d74db0;
+    ;
+    /* Lighter gray for content text */
+}
+
+footer .col a {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #555555;
+    /* Lighter gray for links */
+    text-decoration: none;
+}
+
+footer .col a:hover {
+    color: #000000;
+    /* Black on hover */
+}
+
+footer .follow .icon i {
+    font-size: 20px;
+    margin-right: 15px;
+    color: #555555;
+    /* Gray for icons */
+    cursor: pointer;
+}
+
+footer .follow .icon i:hover {
+    color: #000000;
+    /* Black on hover */
+}
+
+footer .install img {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+footer .install .row {
+    display: flex;
+    gap: 10px;
+}
+
+footer .install img:last-child {
+    width: 200px;
+}
+
+/* Footer styling for smaller screens */
+@media (max-width: 768px) {
+    footer.section-p1 {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    footer .col {
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    footer .icon i {
+        margin-right: 10px;
+    }
+}

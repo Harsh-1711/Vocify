@@ -162,8 +162,9 @@ const LoginSignup = () => {
       const user = response.data.user;
       console.log("User: ", user.email);
       toast.success(response.data.msg || "Login complete");
+      localStorage.setItem("user", JSON.stringify(user));
       setTimeout(() => {
-        navigate("/");
+        navigate("/Dashboard");
       }, 1000);
     } catch (error) {
       console.log(error);
